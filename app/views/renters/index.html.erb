@@ -20,7 +20,7 @@
                       <%#= text_field_tag :id, nil, placeholder: "ID number" %>
                       <%# <%= text_field_tag :search, nil, placeholder: "John Doe" %>
                       <%# <%= text_field_tag :location, nil, placeholder: "Los Angeles, CA" %> 
-                      <%= submit_tag 'Search', class: "btn span2 btn-realto-form btn-large" %>
+                      <%= submit_tag 'Search', name: nil, class: "btn span2 btn-realto-form btn-large" %>
                     <% end %>
                   </div>
                   <!-- .search-form -->   
@@ -64,10 +64,15 @@
                       <%= link_to image_tag("http://placehold.it/370x210"), r %>
                     <span class="prop-tag">Nearby</span>
                     <div class="prop-info">
-                      <h3 class="prop-title"><%= link_to r.fname, r %> <%= link_to r.lname, r %></h3>
+                      <h3 class="prop-title"><%= link_to (r.fname.titleize + " " + r.lname.titleize), r %></h3>
                       <ul class="more-info clearfix">
-                        <li class="info-label clearfix"><span class="pull-left">Rating:</span> 
-                                                        <span class="prop-price pull-right serif italic star-rating" data-score=<%= @avg_rating %>></span>
+                        <li class="info-label clearfix">
+                          <span class="pull-left">Rating:</span> 
+                          <% if r.review.present? %>
+                            <span class="prop-price pull-right serif italic star-rating" data-score=<%= r.review.average(:rating).round(2) %>></span>
+                          <% else %>
+                            <span class="prop-price pull-right serif italic star-rating" data-score=0></span>
+                          <% end %>                                                  
                         <li class="info-label clearfix"><span class="pull-left">Location:</span> <span class="qty pull-right"><%= r.city.titleize %>, <%= r.state.upcase %></span></li>
                       </ul>
                     </div>
@@ -87,10 +92,14 @@
                         <%= link_to image_tag("http://placehold.it/370x210"), r %>
                       <span class="prop-tag">Nearby</span>
                       <div class="prop-info">
-                        <h3 class="prop-title"><%= link_to r.fname, r %> <%= link_to r.lname, r %></h3>
+                        <h3 class="prop-title"><%= link_to (r.fname.titleize + " " + r.lname.titleize), r %> <%= link_to r.lname, r %></h3>
                         <ul class="more-info clearfix">
                           <li class="info-label clearfix"><span class="pull-left">Rating:</span> 
-                                                          <span class="prop-price pull-right serif italic star-rating" data-score=<%= @avg_rating %>></span>
+                          <% if r.review.present? %>
+                            <span class="prop-price pull-right serif italic star-rating" data-score=<%= r.review.average(:rating).round(2) %>></span>
+                          <% else %>
+                            <span class="prop-price pull-right serif italic star-rating" data-score=0></span>
+                          <% end %>
                           <li class="info-label clearfix"><span class="pull-left">Location:</span> <span class="qty pull-right"><%= r.city.titleize %>, <%= r.state.upcase %></span></li>
                         </ul>
                       </div>

@@ -21,7 +21,7 @@
                                 Driver's License No:
                               </span>
                               <span class="qty pull-right">
-                                <%= @renter.license_no %>                                  
+                                <%= @renter.license_no.upcase %>                                  
                               </span>
                             </li>
                             <li class="info-label clearfix">
@@ -97,7 +97,7 @@
                                     Address Line 1:
                                   </span>
                                   <span class="qty pull-center">
-                                    <br /><%= review.address1 %>                                  
+                                    <br /><%= review.address1.titleize %>                                  
                                   </span>
                                 </li>
                                 <li class="info-label clearfix">
@@ -105,7 +105,7 @@
                                     Address Line 2:
                                   </span>
                                   <span class="qty pull-center">
-                                    <br /><%= review.address2 %>
+                                    <br /><%= review.address2.titleize %>
                                   </span>
                                 </li>
                             </ul>
@@ -128,7 +128,7 @@
                                     City:
                                   </span>
                                   <span class="qty pull-right">
-                                    <%= review.city %>
+                                    <%= review.city.titleize %>
                                   </span>
                                 </li>
                                 <li class="info-label clearfix">
@@ -136,7 +136,7 @@
                                     State:
                                   </span>
                                   <span class="qty pull-right">
-                                    <%= review.state %>
+                                    <%= review.state.upcase %>
                                   </span>
                                 </li>
                                 <li class="info-label clearfix">
@@ -181,10 +181,10 @@
               <p>Find your next renter</p>
                 <%= form_tag search_renters_path, method: :get do |f| %>
                   <%= text_field_tag :license, nil, placeholder: "Driver's License" %>
-                  <%= text_field_tag :id, nil, placeholder: "ID number" %>
+                  <%#= text_field_tag :id, nil, placeholder: "ID number" %>
                   <%# <%= text_field_tag :search, nil, placeholder: "John Doe" %>
                   <%# <%= text_field_tag :location, nil, placeholder: "Los Angeles, CA" %> 
-                  <%= submit_tag 'Search', class: "btn span2 btn-realto-form btn-small" %>
+                  <%= submit_tag 'Search', name: nil, class: "btn span2 btn-realto-form btn-small" %>
                 <% end %>
             </div>
             <!-- .search-form -->

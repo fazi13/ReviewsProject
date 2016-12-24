@@ -3,14 +3,15 @@ class RentersController < ApplicationController
   before_action :is_admin?, only: [:edit, :update, :destroy]
 
 	def index
-    visitor_lat = request.location.latitude
-    visitor_long = request.location.longitude
+    #visitor_lat = request.location.latitude
+    #visitor_long = request.location.longitude
     #hard-coded location to San Jose, CA for testing purposes
-    #visitor_lat = 37.3382
-    #visitor_long = -121.8863
+    visitor_lat = 37.3382
+    visitor_long = -121.8863
     search_range = 50 #distance from visitor location in miles
 
     @renters = Renters.near([visitor_lat, visitor_long], search_range)
+    @renter = Renters.search(params)
     @reviews = Review.where(renters_id: @renter)
     if @reviews.blank?
       @avg_rating = 0
