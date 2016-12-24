@@ -2,3 +2,9 @@
 * Ruby version 2.3.3
 * Rails version 5.0.1
 * SQLite3 Database
+
+Goals of project
+* create usable website for users(landlords) to post reviews of previous tenants 
+* interactions with databases and indexing
+* handling user authentication and admin privlidges 
+* using Amazon Web Services to deploy the app
