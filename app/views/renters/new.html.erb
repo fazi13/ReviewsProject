@@ -1,0 +1,52 @@
+<%# page for creating new renter. shows form with values.%>
+<div class="container page-content">
+    <div class="row">
+        <div class="span8">
+            <div class="box-container">
+                <div class="padding30">
+                    <h2 class="page-title">Submit New Renter</h2>
+                    Areas marked with an * are required fields.<br /><br />
+                    <%= form_for @renter, url: renters_path do |f| %>
+                      First Name*<br />
+                      <%= f.text_field :fname %><br />
+                      Last Name*<br />
+                      <%# check episode 13
+                      <%= f.select :property_type_id, PropertyType.all.map{ |f| [f.name, f.id] } 
+                      %>
+                      <%= f.text_field :lname %><br />
+                      Driver's License No* <br />
+                      <%= f.text_field :license_no %><br />
+                      <%= f.label :city %>
+                      <%= f.text_field :city %>
+                      <%= f.label :state %>
+                      <%= f.text_field :state, :maxlength => 2 %>  
+                      <%= f.label :phone %>
+                      <%= f.phone_field :phone %>
+                      <%= f.label :email %>
+                      <%= f.email_field :email %>
+                      <%= f.label :description %>
+                      <%= f.text_area :description, :rows => 10, style: 'width:90%;' %>
+                      <br />
+                      <%= f.submit "Submit New Renter", class: "btn span3 btn-realto-form btn-large" %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <!-- .span8 -->
+        <div class="span4 widget">
+          <div class="search-form widget">
+          <p>Find your next renter</p>
+            <%= form_tag search_renters_path, method: :get do |f| %>
+              <%= text_field_tag :license, nil, placeholder: "Driver's License" %>
+              <%= text_field_tag :id, nil, placeholder: "ID number" %>
+              <%# <%= text_field_tag :search, nil, placeholder: "John Doe" %>
+              <%# <%= text_field_tag :location, nil, placeholder: "Los Angeles, CA" %> 
+              <%= submit_tag 'Search', class: "btn span2 btn-realto-form btn-small" %>
+            <% end %>
+          </div>
+          <!-- .search-form -->
+        </div>
+        <!-- .span4 -->
+    </div>
+    <!-- .row -->
+</div>

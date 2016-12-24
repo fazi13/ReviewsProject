@@ -1,0 +1,196 @@
+<%# page for displaying renter and values.%>
+<div class="container page-content">
+    <div class="row">
+        <div class="span8">
+            <div class="box-container">
+                <div id="adv-custom-pager"></div>
+                <div class="clearfix">
+                    <div class="clearfix padding30">
+                        <h2 class="prop-title pull-left margin0"><%= @renter.fname %> <%= @renter.lname %>
+                          <% if current_user.try(:admin?) %>
+                            <small><%= link_to "Edit", edit_renter_path, class: "btn btn-primary btn-mini" %></small>
+                            <small><%= link_to "Delete", renter_path, method: :delete, data: {confirm: "Are you sure you want to delete?"}, class: "btn btn-danger btn-mini" %></small>
+                          <% end %>
+                        </h2>
+                        <span class="prop-price pull-right serif italic star-rating" data-score=<%= @avg_rating %>></span>                        
+                    </div>
+                    <div class="clearfix padding030 row-fluid">
+                        <ul class="more-info pull-left span6">
+                            <li class="info-label clearfix">
+                              <span class="pull-left">
+                                Driver's License No:
+                              </span>
+                              <span class="qty pull-right">
+                                <%= @renter.license_no %>                                  
+                              </span>
+                            </li>
+                            <li class="info-label clearfix">
+                              <span class="pull-left">
+                               Phone:
+                              </span>
+                              <span class="qty pull-right">
+                                <%= number_to_phone(@renter.phone) %>
+                              </span>
+                            </li>
+                            <li class="info-label clearfix">
+                              <span class="pull-left">
+                                Email:
+                              </span>
+                              <span class="qty pull-right">
+                               <%= mail_to(@renter.email) %>
+                              </span>
+                            </li>
+                        </ul>
+                        <ul class="more-info pull-right span6">
+                            <li class="info-label clearfix">
+                              <span class="pull-left">
+                                City:
+                              </span>
+                              <span class="qty pull-right">
+                                <%= @renter.city.titleize %>
+                              </span>
+                            </li>
+                            <li class="info-label clearfix">
+                              <span class="pull-left">
+                                State:
+                              </span>
+                              <span class="qty pull-right">
+                                <%= @renter.state.upcase %>
+                              </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix padding30">
+                        <h3>Description</h3>
+                        <p><%= simple_format(@renter.description) %>
+                        </p>
+                    </div>
+                    <div class="clearfix padding30">
+                        <%= link_to "Write a Review", new_renter_review_path(@renter), class: "btn btn-small btn-realto"%>
+                        <h3>Reviews</h3>
+                        <% if @reviews.blank? %>
+                          <p>No reviews yet!
+                        <% else %>
+                        <% @reviews.reverse_each do |review| %>
+                          <div class="clearfix padding010 row-fluid">
+                            <ul class="more-info pull-left span3">
+                              <li class="info-label clearfix">
+                                  <span class="pull-left">
+                                    Submitted by: <b><%= "#{review.user.first_name} #{review.user.last_name}" %></b>
+                                    <% if current_user.try(:admin?) || current_user.id == review.user.id %>
+                                      <small><%= link_to "Edit", edit_renter_review_path(@renter, id: review), class: "btn btn-primary btn-mini" %></small>
+                                      <small><%= link_to "Delete", renter_review_path(@renter, id: review), method: :delete, data: {confirm: "Are you sure you want to delete?"}, class: "btn btn-danger btn-mini" %>         
+                                      </small>
+                                    <% end %>
+                                  </span>
+                                </li>
+                                <li class="info-label clearfix">
+                                  <span class="pull-left">
+                                    Lived Here:
+                                  </span>
+                                  <span class="qty pull-right">
+                                    <%= review.years %> year(s)                                  
+                                  </span>
+                                </li>
+                                <li class="info-label clearfix">
+                                  <span class="pull-left">
+                                    Address Line 1:
+                                  </span>
+                                  <span class="qty pull-center">
+                                    <br /><%= review.address1 %>                                  
+                                  </span>
+                                </li>
+                                <li class="info-label clearfix">
+                                  <span class="pull-left">
+                                    Address Line 2:
+                                  </span>
+                                  <span class="qty pull-center">
+                                    <br /><%= review.address2 %>
+                                  </span>
+                                </li>
+                            </ul>
+                            <ul class="more-info pull-right span3">
+                                <li class="info-label clearfix">
+                                  <span class="qty pull-right">
+                                    <div class="clearfix star-rating" data-score=<%= review.rating %>></div>
+                                  </span>
+                                </li>
+                                <li class="info-label clearfix">
+                                  <span class="pull-left">
+                                    Property:
+                                  </span>
+                                  <span class="qty pull-right">
+                                    <%= PropertyType.find(review.property_type_id).name %>
+                                  </span>
+                                </li>
+                                <li class="info-label clearfix">
+                                  <span class="pull-left">
+                                    City:
+                                  </span>
+                                  <span class="qty pull-right">
+                                    <%= review.city %>
+                                  </span>
+                                </li>
+                                <li class="info-label clearfix">
+                                  <span class="pull-left">
+                                    State:
+                                  </span>
+                                  <span class="qty pull-right">
+                                    <%= review.state %>
+                                  </span>
+                                </li>
+                                <li class="info-label clearfix">
+                                  <span class="pull-left">
+                                    Zipcode:
+                                  </span>
+                                  <span class="qty pull-right">
+                                    <%= review.zipcode %>
+                                  </span>
+                                </li>
+                            </ul>
+                          </div>
+                          <div class="clearfix padding10">
+                            <h5><b>
+                              Details:
+                            </h5></b>
+                            <%= simple_format(review.comment) %>
+                          </div>
+                          <hr><p><p><p>
+                        <% end %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .span8 -->
+        <div class="span4">
+            <div class="widget map box-container padding30">
+                <h3 class="widget-title">Map &amp; Directions</h3>
+                  <iframe
+                    width="600"
+                    height="450"
+                    frameborder="0" style="border:0"
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAOQYMDgVIAU7efjItrEydrbTO7g6hPpjU&q=<%= @renter.city %>, <%= @renter.state %>" allowfullscreen>
+                  </iframe>
+                  <dl class="margin0">
+                    <dt>Current Location of <%= @renter.fname.titleize %> <%= @renter.lname.titleize %></dt>
+                    <dd class="margin0"><%= @renter.city %>, <%= @renter.state %></dd>
+                </dl>
+            </div>
+            <div class="search-form widget">
+              <p>Find your next renter</p>
+                <%= form_tag search_renters_path, method: :get do |f| %>
+                  <%= text_field_tag :license, nil, placeholder: "Driver's License" %>
+                  <%= text_field_tag :id, nil, placeholder: "ID number" %>
+                  <%# <%= text_field_tag :search, nil, placeholder: "John Doe" %>
+                  <%# <%= text_field_tag :location, nil, placeholder: "Los Angeles, CA" %> 
+                  <%= submit_tag 'Search', class: "btn span2 btn-realto-form btn-small" %>
+                <% end %>
+            </div>
+            <!-- .search-form -->
+        </div>
+        <!-- .span4 -->
+    </div>
+    <!-- .row -->
+</div>
+<!-- .container -->

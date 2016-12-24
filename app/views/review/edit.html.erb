@@ -1,0 +1,52 @@
+<div class="container page-content">
+    <div class="row">
+        <div class="span8">
+            <div class="box-container">
+                <div class="padding30">
+                    <h2 class="page-title">Submit New Review</h2>
+                    Areas marked with an * are required fields.<br /><br />
+                    <%= form_for [@renter, @review] do |f| %>
+                      Comment*<br />
+                      <%= f.text_area :comment, :rows => 10, style: 'width:100%;' %><br />
+                      Rating*<br />
+                      <%= f.number_field :rating, value: 1, min: 1, max: 5 %><br />
+                      <b>Previously Rented Property Details </b><br />
+                      Years Lived at Property*<br />
+                      <%= f.text_field :years, as: :integer, :maxlength => 2 %><br />
+                      Property Type*<br />
+                      <%= f.select :property_type_id, PropertyType.all.map{ |f| [f.name, f.id] } %><br />
+                      Address Line 1*<br />
+                      <%= f.text_field :address1 %><br />
+                      Address Line 2<br />
+                      <%= f.text_field :address2 %><br />
+                      City*<br />
+                      <%= f.text_field :city %><br />
+                      State*<br />
+                      <%= f.text_field :state, :maxlength => 2 %><br />
+                      Zipcode*<br />
+                      <%= f.text_field :zipcode, as: :integer, :maxlength => 5 %><br />
+                      <%= f.submit "Submit New Review", class: "btn span3 btn-realto-form btn-large" %>
+                    <% end %> 
+                </div>
+            </div>
+        </div>
+        <!-- .span8 -->
+        <div class="span4 widget">
+            <div class="widget map box-container padding30">
+                <h3 class="widget-title">Map &amp; Directions</h3>
+                  <iframe
+                    width="600"
+                    height="450"
+                    frameborder="0" style="border:0"
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAOQYMDgVIAU7efjItrEydrbTO7g6hPpjU&q=<%= @renter.city %>, <%= @renter.state %>" allowfullscreen>
+                  </iframe>
+                  <dl class="margin0">
+                    <dt>Current Location of <%= @renter.fname.titleize %> <%= @renter.lname.titleize %></dt>
+                    <dd class="margin0"><%= @renter.city %>, <%= @renter.state %></dd>
+                </dl>
+            </div>
+        </div>
+        <!-- .span4 -->
+    </div>
+    <!-- .row -->
+</div>

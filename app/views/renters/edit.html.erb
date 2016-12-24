@@ -1,0 +1,51 @@
+<%# page for editing renter. shows form with values.%>
+<div class="container page-content">
+    <div class="row">
+        <div class="span8">
+            <div class="box-container">
+                <div class="padding30">
+                    <h2 class="page-title">Submit New Renter</h2>
+                    Areas marked with an * are required fields.<br /><br />
+                    <%= form_for @renter, url: renter_path do |f| %>
+                      First Name*<br />
+                      <%= f.text_field :fname %><br />
+                      Last Name*<br />
+                      <%= f.text_field :lname %><br />
+                      Driver's License No* <br />
+                      <%= f.text_field :license_no %><br />
+                      <%= f.label :city %>
+                      <%= f.text_field :city %>
+                      <%= f.label :state %>
+                      <%= f.text_field :state, :maxlength => 2 %>  
+                      <%= f.label :phone %>
+                      <%= f.phone_field :phone %>
+                      <%= f.label :email %>
+                      <%= f.text_field :email %>
+                      <%= f.label :description %>
+                      <%= f.text_area :description, :rows => 10, style: 'width:100%;' %>
+                      <br />
+                      <%= f.submit "Edit Renter", class: "btn span3 btn-realto-form btn-large" %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <!-- .span8 -->
+        <div class="span4 widget">
+            <div class="widget map box-container padding30">
+              <h3 class="widget-title">Map &amp; Directions</h3>
+                <iframe
+                  width="600"
+                  height="450"
+                  frameborder="0" style="border:0"
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAOQYMDgVIAU7efjItrEydrbTO7g6hPpjU&q=<%= @renter.city %>, <%= @renter.state %>" allowfullscreen>
+                </iframe>
+                <dl class="margin0">
+                  <dt>Current Location of <%= @renter.fname.titleize %> <%= @renter.lname.titleize %></dt>
+                  <dd class="margin0"><%= @renter.city %>, <%= @renter.state %></dd>
+              </dl>
+            </div>
+        </div>
+        <!-- .span4 -->
+    </div>
+    <!-- .row -->
+</div>

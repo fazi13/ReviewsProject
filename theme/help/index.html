@@ -1,0 +1,280 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>Template Documentation Template</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<style type="text/css" media="screen">
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+	</style>
+</head>
+
+
+<body>
+	<div class="container">
+	
+		<h3 class="center alt">&ldquo;Realto xHTML/CSS Template&rdquo; Documentation by &ldquo;playlab&rdquo; v1.0</h3>
+		
+		<hr>
+		
+		<h1 class="center">&ldquo;Realto xHTML/CSS Template&rdquo;</h1>
+		
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+					Created: 04/07/2013<br>
+					By: playlab<br>
+					Email: <a href="mailto:hello@myplaylab.com">hello@myplaylab.com</a></strong></p>
+			</div><!-- end div .span-6 -->		
+	
+			<div class="span-12 last">
+				<p class="prepend-top append-0">Thank you for purchasing my theme. If you have any questions that are beyond the scope of this help file, please feel free to email via my user page contact form <a href="http://themeforest.net/user/playlab">here</a>. Thanks so much!</p>
+			</div>
+		</div><!-- end div .borderTop -->
+		
+		<hr>
+		
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+			<li><a href="#htmlStructure">HTML Structure</a></li>
+			<li><a href="#cssFiles">CSS Files and Structure</a></li>
+			<li><a href="#javascript">JavaScript</a></li>
+			<li><a href="#psdFiles">PSD Files</a></li>
+			<li><a href="#credits">Sources and Credits</a></li>
+			
+			<li><a href="#">PHP Code Explanation</a> <em class="quiet small">(If your theme uses PHP)</em></li>
+			<li><a href="#">Flash</a>  <em class="quiet small">(If your theme uses Flash)</em></li>
+			<li><a href="#">API Usage</a> <em class="quiet small">(If your theme uses an API)</em></li>
+			<li><a href="#">Any additional unique features that need an overview</a></li>
+		</ol>
+		
+		<hr>
+		
+		<h3 id="htmlStructure"><strong>A) HTML Structure</strong> - <a href="#toc">top</a></h3>
+		<p>This theme is a responsive layout based on <a href="http://twitter.github.io/bootstrap/" target="_blank">Bootstrap</a>. Here below an example of the homepage</p>
+		<p><img src="assets/images/htmlstructure.png" width="665" height="472"></p>
+				
+<p>If you would like to edit the color check the file css/colors.css you will find six pre-select color schemes. To add another color scheme add ID to the tag body as follow</p>
+<pre>&lt;body id=&quot;yourcolor&quot;&gt;<br><br>Explame:<br>&lt;body id=&quot;green&quot;&gt; 
+
+		</pre>
+<hr>
+
+		<h3 id="cssFiles"><strong>B) CSS Files and Structure</strong> - <a href="#toc">top</a></h3>
+
+		<p>This theme imports five CSS files.</p>
+		<ol>
+		    <li>bootstrap.css</li>
+		    <li>bootstrap-responsive.css</li>
+		    <li>font-awesome.min.css</li>
+		    <li>colors.css</li>
+		    <li>style.css</li>
+	    </ol>
+		<p>To add your own style you can modify the style.css</p>
+		<pre>
+
+
+Stile.css structure
+
+/* ==========================================================<br>! General<br>========================================================== */
+
+All general styles for h1, h2, h3, links
+, etc...
+
+
+/* ==========================================================<br>! Typography<br>========================================================== */	
+If you want to change the typo styles go here
+	
+/* ==========================================================
+! Header
+========================================================== */	
+All styles for the header section like logo
+, nav bar, etc...
+	
+/* ==========================================================
+! Pages
+========================================================== */
+General style for pages
+
+
+/* ==========================================================
+! Properties Container
+========================================================== */	
+General style for properties
+
+
+/* ==========================================================
+! Properties Form
+========================================================== */
+General style for forms in the contact page and financing
+
+
+
+/* ==========================================================
+! Homepage Carousel
+========================================================== */
+General style for the homepage carousel
+
+
+
+/* ==========================================================
+! Info Box Container
+========================================================== */
+General style for box container
+
+/* ==========================================================
+! Adv message
+========================================================== */
+General style for ADV message
+
+
+/* ==========================================================
+! Agent
+========================================================== */
+General style for Agents page
+
+
+/* ==========================================================
+! Home Blog Article
+========================================================== */
+General style for Blog
+
+
+/* ==========================================================
+! Buttons
+========================================================== */
+General style for buttons
+
+
+/* ==========================================================
+! Sidebars
+========================================================== */
+General style for sidebar
+
+
+/* ==========================================================
+! Footer
+========================================================== */
+General style for footer
+
+
+/* ==========================================================
+! Properties Slideshow
+========================================================== */
+General style for property page slideshow
+
+
+/* ==========================================================
+! Property Page
+========================================================== */
+General style for property page
+
+
+
+/* ==========================================================
+! Blog
+========================================================== */
+General style for blog
+
+
+
+/* ==========================================================
+! Accordion
+========================================================== */
+General style for bootstrap accordion
+
+
+/* ==========================================================
+! Large desktop
+========================================================== */
+Some adjustment for large desktop
+
+
+/* ==========================================================
+! Portrait tablet to landscape and desktop
+========================================================== */
+Some adjustment for tablet to landscape and desktop
+ 
+/* ==========================================================
+! Landscape phone to portrait tablet
+========================================================== */
+Some adjustment for portrait tablet
+
+
+/* ==========================================================
+! Landscape phones and down
+========================================================== */
+Some adjustment for phones and down
+</pre>
+		
+		<p>If you would like to edit a specific section of the site, simply find the appropriate label in the CSS file, and then scroll down until you find the appropriate style that needs to be edited.		</p>
+		<hr>
+		
+		<h3 id="javascript"><strong>C) JavaScript</strong> - <a href="#toc">top</a></h3>
+		
+		<p>This theme imports five Javascript files.</p>
+		
+		<ol>
+			<li>jquery.js</li>
+			<li>bootstrap.min.js</li>
+			<li>jquery.placeholder.js</li>
+			<li>html5shiv.js</li>
+			<li>custom.js</li>
+		</ol>
+		  
+		<ol>
+			<li>jQuery is a Javascript library that greatly reduces the amount of code that you must write.</li>
+			<li>Plugins can be included individually (though some have required dependencies), or all at once. Both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong>contain all plugins in a single file.
+			    
+			</li>
+			<li>A jQuery plugin that enables HTML5 placeholder behavior for browsers that aren&rsquo;t trying hard enough yet </li>
+			<li>Html5shiv code adds new HTML5 elements (which is simple code), but also supports printing HTML5 elements <em>and</em> includes the default styles for HTML5 elements, like block on article and section.</li>
+			<li>All custom js code </li>
+		</ol>
+		
+		<hr>
+		
+		<h3 id="psdFiles"><strong>D) PSD Files</strong> - <a href="#toc">top</a></h3>
+		
+		<p>I've included eleven psds with this theme:</p>
+		
+			<ol>
+				<li>1RE-homepage.psd</li>
+				<li>2RE-about-us.psd</li>
+				<li>3RE-properties-grid.psd</li>
+				<li>4RE-properties-list.psd</li>
+				<li>5RE-property-page.psd</li>
+				<li>6RE-agents-profile-page.psd</li>
+				<li>7RE-agents.psd</li>
+				<li>8RE-blog-post.psd</li>
+				<li>9RE-blog.psd</li>
+				<li>10RE-contact-us.psd</li>
+				<li>11RE-financing.psd		</li>
+			</ol>
+		<hr>
+		
+		<h3 id="credits"><strong>E) Sources and Credits</strong> - <a href="#toc">top</a></h3>
+		
+		<p>I've used the following images, icons or other files as listed.
+		
+		<ul>
+			<li>Icons by <a href="http://fortawesome.github.io/Font-Awesome/"> Font Awesome</a></li>
+			<li>Images for <a href="http://sxc.hu">sxc.hu</a></li>
+		</ul>
+		
+		<hr>
+		
+		<p>Once again, thank you so much for purchasing this theme. As I said at the beginning, I'd be glad to help you if you have any questions relating to this theme. No guarantees, but I'll do my best to assist. If you have a more general question relating to the themes on ThemeForest, you might consider visiting the forums and asking your question in the "Item Discussion" section.</p> 
+		
+		<p class="append-bottom alt large"><strong>playlab</strong></p>
+		<p><a href="#toc">Go To Table of Contents</a></p>
+		
+		<hr class="space">
+	</div><!-- end div .container -->
+</body>
+</html>

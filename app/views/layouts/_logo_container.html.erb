@@ -1,0 +1,22 @@
+  <div id="logo-container">
+    <div class="container">
+      <div class="row">
+        <div class="span8">
+          <%= link_to "Renter Reviews", root_path, class: "brand logo-text" %>
+          <span class="tag-line hidden-phone">Get a review before renting out</span>
+        </div>
+        <div class="span4">
+          <ul class="inline pull-right">
+            <% if user_signed_in? %>
+              <li><%= link_to "My Account", edit_user_registration_path %></li>
+              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "Sign In", new_user_session_path %></li>
+              <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <% end %>
+          </ul> 
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- #logo-container -->

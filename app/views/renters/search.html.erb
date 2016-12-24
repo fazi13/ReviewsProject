@@ -1,0 +1,55 @@
+<%# this page should redirect to the page of the renter using license number or id number %>
+<div class="container page-content">
+    <div class="row">
+        <div class="span12">
+            <div class="row">
+              <% if @renter.blank? %>
+                <h3>Couldn't find a Renter with provided search criteria</h3>
+               <% else %> 
+                <% @renter.each do |r| %>
+                  <div class="span12 box-container">
+                      <div class="holder row">
+                          <a class="span4 overlay" href="#" title="renter title">
+                              <span class="more"></span>
+                          </a>
+                          <span class="prop-price pull-right serif italic star-rating" data-score=<%= @avg_rating %>></span>
+                          <div class="span8 prop-info">
+                              <h3 class="prop-title"><%= link_to r.fname, r %> <%= link_to r.lname, r %></h3>
+                              <ul class="more-info clearfix">
+                                  <li class="info-label clearfix"><span class="pull-left">Driver's License:</span>
+                                      <span class="qty pull-right"><%= r.license_no %></span></li>
+                                  <li class="info-label clearfix"><span class="pull-left">Location:</span>
+                                      <span class="qty pull-right"><%= r.city.titleize %>, <%= r.state.upcase %></span></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- .span12 .box-container -->
+                <% end %>
+              <% end %>  
+            </div>
+            <!-- .row -->
+        </div>
+        <!-- .span12 -->
+    </div>
+    <!-- .row -->
+</div>
+<!-- .container -->
+<div class="container">
+    <div class="row">
+        <div class="span12 box-container">
+            <div class="row adv-message clearfix">
+                <div class="pull-left span7">
+                    <p class="upper-line serif italic">Realto xHTML/CSS Template is The
+                        Best Solution To Sell House Online</p>
+                    <p class="lower-line">This template is appropriate for Real Estate
+                        Company, who need to do their business online via websites.</p>
+                </div>
+                <!-- .pull-left -->
+                <a class="pull-right btn btn-large btn-realto span3" href="#" title="Buy It Now">Buy
+                    It Now!</a>
+            </div>
+            <!-- .adv-message  -->
+        </div>
+    </div>
+</div>
